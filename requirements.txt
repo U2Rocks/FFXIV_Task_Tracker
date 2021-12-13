@@ -1,0 +1,6 @@
+flask
+Jinja2
+MarkupSafe
+itsdangerous
+SQLAlchemy
+urllib3
