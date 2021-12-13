@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <!--ARR BLOCK-->
+        <div id="arr_spot" class="container bg-primary rounded border border-white" style="color:white; padding-bottom: 10px;">
+        <h2>A Realm Reborn</h2>
+        {% if exp_data[0].exp_status == 'active' %}
+        <a href="{{ url_for('realm_page') }}"><input type="button" class="btn btn-danger" value="Hide Content"></a>
+        <br>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Duty Name</th>
+                    <th>Duty Type</th>
+                    <th>Required Level</th>
+                    <th>Completed?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+                {% for item in exp_rows_arr %}
+
+                <tr>
+                    <td>{{ item.duty_name }}</td>
+                    <td>{{ item.duty_type }}</td>
+                    <td>{{ item.duty_level }}</td>
+                    {% if item.duty_complete == 'Incomplete' %}
+                        {% if item.id == 10 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete" id="arr_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete"></a></td>
+                        {% endif %}
+                    {% elif item.duty_complete == 'Complete' %}
+                        {% if item.id == 10 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed" id="arr_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed"></a></td>
+                        {% endif %}
+                    {% else %}
+                    <td><button class="btn btn-warning">{{ item.duty_complete }}</button></td>
+                    {% endif %}
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif exp_data[0].exp_status == 'disabled' %}
+        <a href="{{ url_for('realm_page') }}"><input type="button" class="btn btn-success" value="Show Content"></a>
+        {% else %}
+        <a href="{{ url_for('realm_page') }}"><input type="button" class="btn btn-warning" value="{{ exp_data[0].exp_status }}"></a>
+        {% endif %}
+        </div>
+        <!--ARR BLOCK END-->
+        <br>
+
+        <!-- Heavensward Block-->
+        <div id="hev_spot" class="container bg-primary rounded border border-white" style="color:white; padding-bottom: 10px;">
+        <h2>Heavensward</h2>
+        {% if exp_data[1].exp_status == 'active' %}
+        <a href="{{ url_for('heavensward_page') }}"><input type="button" class="btn btn-danger" value="Hide Content"></a>
+        <br>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Duty Name</th>
+                    <th>Duty Type</th>
+                    <th>Required Level</th>
+                    <th>Completed?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+                {% for item in exp_rows_hev %}
+                <tr>
+                    <td>{{ item.duty_name }}</td>
+                    <td>{{ item.duty_type }}</td>
+                    <td>{{ item.duty_level }}</td>
+                    {% if item.duty_complete == 'Incomplete' %}
+                        {% if item.id == 24 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete" id="hev_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete"></a></td>
+                        {% endif %}
+                    {% elif item.duty_complete == 'Complete' %}
+                        {% if item.id == 24 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed" id="hev_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed"></a></td>
+                        {% endif %}
+                    {% else %}
+                    <td><button class="btn btn-warning">{{ item.duty_complete }}</button></td>
+                    {% endif %}
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif exp_data[1].exp_status == 'disabled' %}
+        <a href="{{ url_for('heavensward_page') }}"><input type="button" class="btn btn-success" value="Show Content"></a>
+        {% else %}
+        <a href="{{ url_for('heavensward_page') }}"><input type="button" class="btn btn-warning" value="{{ exp_data[1].exp_status }}"></a>
+        {% endif %}
+        </div>
+        <br>
+
+        <!-- Heavensward Block END -->
+
+        <!-- Stormblood Block -->
+        <div id="sto_spot" class="container bg-primary rounded border border-white" style="color:white; padding-bottom: 10px;">
+        <h2>Stormblood</h2>
+        {% if exp_data[2].exp_status == 'active' %}
+        <a href="{{ url_for('stormblood_page') }}"><input type="button" class="btn btn-danger" value="Hide Content"></a>
+        <br>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Duty Name</th>
+                    <th>Duty Type</th>
+                    <th>Required Level</th>
+                    <th>Completed?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+                {% for item in exp_rows_sto %}
+                <tr>
+                    <td>{{ item.duty_name }}</td>
+                    <td>{{ item.duty_type }}</td>
+                    <td>{{ item.duty_level }}</td>
+                    {% if item.duty_complete == 'Incomplete' %}
+                        {% if item.id == 36 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete" id="sto_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete"></a></td>
+                        {% endif %}
+                    {% elif item.duty_complete == 'Complete' %}
+                        {% if item.id == 36 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed" id="sto_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed"></a></td>
+                        {% endif %}
+                    {% else %}
+                    <td><button class="btn btn-warning">{{ item.duty_complete }}</button></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif exp_data[2].exp_status == 'disabled' %}
+        <a href="{{ url_for('stormblood_page') }}"><input type="button" class="btn btn-success" value="Show Content"></a>
+        {% else %}
+        <a href="{{ url_for('stormblood_page') }}"><input type="button" class="btn btn-warning" value="{{ exp_data[0].exp_status }}"></a>
+        {% endif %}
+        </div>
+        <!-- Stormblood Block END -->
+        <br>
+
+        <!-- Shadowbringers Block -->
+        <div id="shb_spot" class="container bg-primary rounded border border-white" style="color:white; padding-bottom: 10px;">
+        <h2>Shadowbringers</h2>
+        {% if exp_data[3].exp_status == 'active' %}
+        <a href="{{ url_for('shadowbringers_page') }}"><input type="button" class="btn btn-danger" value="Hide Content"></a>
+        <br>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Duty Name</th>
+                    <th>Duty Type</th>
+                    <th>Required Level</th>
+                    <th>Completed?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+                {% for item in exp_rows_shb %}
+                <tr>
+                    <td>{{ item.duty_name }}</td>
+                    <td>{{ item.duty_type }}</td>
+                    <td>{{ item.duty_level }}</td>
+                    {% if item.duty_complete == 'Incomplete' %}
+                        {% if item.id == 51 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete" id="shb_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete"></a></td>
+                        {% endif %}
+                    {% elif item.duty_complete == 'Complete' %}
+                        {% if item.id == 51 %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed" id="shb_spot2"></a></td>
+                        {% else %}
+                        <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed"></a></td>
+                        {% endif %}
+                    {% else %}
+                    <td><button class="btn btn-warning">{{ item.duty_complete }}</button></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif exp_data[3].exp_status == 'disabled' %}
+        <a href="{{ url_for('shadowbringers_page') }}"><input type="button" class="btn btn-success" value="Show Content"></a>
+        {% else %}
+        <a href="{{ url_for('shadowbringers_page') }}"><input type="button" class="btn btn-warning" value="{{ exp_data[3].exp_status }}"></a>
+        {% endif %}
+        </div>
+        <!-- Shadowbringers Block END -->
+        <br>
+
+        <!-- Endwalker Block -->
+        <div id="end_spot" class="container bg-primary rounded border border-white" style="color:white; padding-bottom: 10px;">
+        <h2>Endwalker</h2>
+        {% if exp_data[4].exp_status == 'active' %}
+        <a href="{{ url_for('endwalker_page') }}"><input type="button" class="btn btn-danger" value="Hide Content"></a>
+        <br>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>Duty Name</th>
+                    <th>Duty Type</th>
+                    <th>Required Level</th>
+                    <th>Completed?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+                {% for item in exp_rows_end %}
+                <tr>
+                    <td>{{ item.duty_name }}</td>
+                    <td>{{ item.duty_type }}</td>
+                    <td>{{ item.duty_level }}</td>
+                    {% if item.duty_complete == 'Incomplete' %}
+                    <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-danger" value="Incomplete"></a></td>
+                    {% elif item.duty_complete == 'Complete' %}
+                    <td><a href="/COMP/{{ item.id }}"><input type="button" class="btn btn-success" value="Completed"></a></td>
+                    {% else %}
+                    <td><button class="btn btn-warning">{{ item.duty_complete }}</button></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif exp_data[4].exp_status == 'disabled' %}
+        <a href="{{ url_for('endwalker_page') }}"><input type="button" class="btn btn-success" value="Show Content"></a>
+        {% else %}
+        <a href="{{ url_for('endwalker_page') }}"><input type="button" class="btn btn-warning" value="{{ exp_data[4].exp_status }}"></a>
+        {% endif %}
+        </div>
+        <!-- Endwalker Block END -->
+    </div>
+  
+{% endblock %}
