@@ -4,3 +4,4 @@ MarkupSafe
 itsdangerous
 SQLAlchemy
 urllib3
+gunicorn
